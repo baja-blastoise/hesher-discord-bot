@@ -277,7 +277,7 @@ async def on_message(message):
         print(t1-t0)
     
     # random
-    if message.content.startswith('$random '):
+    if message.content.startswith('$random'):
         print('$random command found')
         t0 = time.time()
         results = RANDOM(bprint)
