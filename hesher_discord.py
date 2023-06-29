@@ -1,7 +1,7 @@
 import os
 import discord
 from dotenv import load_dotenv
-from malookup import BANDLOOKUP, DISCOGLOOKUP, MEMBERLOOKUP, SIMILAR, ARTISTLOOKUP, ALBUMLOOKUP
+from malookup import BANDLOOKUP, DISCOGLOOKUP, MEMBERLOOKUP, SIMILAR, ARTISTLOOKUP, ALBUMLOOKUP, RANDOM
 import time
 from math import ceil
 
@@ -273,6 +273,18 @@ async def on_message(message):
             for i in range(0, len(output)):
                 msg = '```' + output[i] + '```'
                 await message.channel.send(msg)
+        t1 = time.time()
+        print(t1-t0)
+    
+    # random
+    if message.content.startswith('$random '):
+        print('$random command found')
+        t0 = time.time()
+        results = RANDOM(bprint)
+        output = msg_lim(results, char_lim)
+        for i in range(0, len(output)):
+            msg = '```' + output[i] + '```'
+            await message.channel.send(msg)
         t1 = time.time()
         print(t1-t0)
 
